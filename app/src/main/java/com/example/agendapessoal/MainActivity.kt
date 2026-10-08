@@ -157,6 +157,63 @@ fun Agenda() {
             Text("Adicionar")
         }
 
+        Spacer(modifier = Modifier.height(20.dp))
 
+        Text(
+            text = "Meus compromissos: ",
+            fontSize= 15.sp,
+            color = Color(0xFF18063A)
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        LazyColumn { items(compromissos) { compromisso ->
+
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp)
+                ) {
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+
+                        Column(
+                            modifier = Modifier.weight(1f)
+                        ) {
+
+                            Text(
+                                text = compromisso.titulo
+                            )
+
+                            Text(
+                                text = compromisso.horario
+                            )
+
+                            Text(
+                                text = compromisso.cat
+                            )
+                        }
+
+                        IconButton(
+                            onClick = {
+                                compromissos.remove(compromisso)
+                            }
+                        ) {
+
+                            Icon(
+                                imageVector = Icons.Default.Delete,
+                                contentDescription = "Excluir"
+
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 }
